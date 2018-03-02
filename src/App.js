@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './components/Home';
 import Scores from './components/Scores';
+import Footer from './components/Footer';
 
 import './assets/main.css';
 
@@ -17,6 +18,7 @@ class App extends Component {
           <Header />
           <Route exact path="/" component={Home} />
           <Route path="/scores" component={Scores} />
+          <Footer />
         </Container>
       </Router>
     );

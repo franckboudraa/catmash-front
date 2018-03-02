@@ -31,8 +31,8 @@ body {
   position: absolute !important;
   left: 50% !important;
   top: 50% !important;
-  height: 100% !important;
-  width: auto !important;
+  /*height: 100% !important;
+  width: auto !important;*/
   -webkit-transform: translate(-50%, -50%) !important;
   -ms-transform: translate(-50%, -50%) !important;
   transform: translate(-50%, -50%) !important;
@@ -40,6 +40,10 @@ body {
 .ui.image {
   /* CSS Fix for Semantic UI since our pictures doesn't have the same ratio */
   max-width: unset !important;
+}
+
+.mt-5 {
+  margin-top: 3rem !important;
 }
 
 .mb-5 {
