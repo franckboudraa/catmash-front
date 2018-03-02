@@ -2,7 +2,29 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import axios from 'axios';
 
-import { Card, Image, Loader, Message } from 'semantic-ui-react';
+import { Card, Icon, Image, Loader, Message } from 'semantic-ui-react';
+
+const SelectedCatMessage = () => (
+  <Card.Content>
+    <Card.Description style={{ textAlign: 'center' }}>
+      <Icon color="green" size="massive" name="check circle" />
+    </Card.Description>
+  </Card.Content>
+);
+
+const NotSelectedCatMessage = ({ id }) => {
+  if (id === 0) {
+    return '';
+  } else {
+    return (
+      <Card.Content>
+        <Card.Description style={{ textAlign: 'center' }}>
+          <Icon color="red" size="massive" name="remove circle" />
+        </Card.Description>
+      </Card.Content>
+    );
+  }
+};
 
 class Home extends Component {
   constructor(props) {
@@ -11,7 +33,8 @@ class Home extends Component {
       loading: true,
       error: false,
       cats: [],
-      swipeAnimation: false
+      swipeAnimation: false,
+      selectedCat: 0
     };
   }
 
@@ -49,14 +72,16 @@ class Home extends Component {
   voteForCat = id => {
     console.log(`voted for cat ${id}`);
     this.setState({
-      swipeAnimation: true
+      swipeAnimation: true,
+      selectedCat: id
     });
     setTimeout(
       function() {
         this.setState({
           loading: true,
           swipeAnimation: false,
-          cats: []
+          cats: [],
+          selectedCat: 0
         });
         this.fetchCats();
       }.bind(this),
@@ -65,16 +90,17 @@ class Home extends Component {
   };
 
   renderCats = () => {
-    const { cats, swipeAnimation } = this.state;
+    const { cats, swipeAnimation, selectedCat } = this.state;
     return (
       <Card.Group centered rows={2} className="radius">
         {cats.map((cat, index) => (
           <Card
+            link
             key={cat.id}
+            style={{ width: '300px' }}
             className={
-              'thumbnail ' +
               (index === 0 ? 'swipe-left ' : 'swipe-right ') +
-              (swipeAnimation ? 'animit' : null)
+              (swipeAnimation ? 'animit' : '')
             }
           >
             <Image
@@ -85,8 +111,15 @@ class Home extends Component {
               size="massive"
               as="img"
               src={cat.url}
-              onClick={e => this.voteForCat(cat.id, e)}
+              onClick={e => {
+                this.voteForCat(cat.id, e);
+              }}
             />
+            {selectedCat === cat.id ? (
+              <SelectedCatMessage />
+            ) : (
+              <NotSelectedCatMessage id={selectedCat} />
+            )}
           </Card>
         ))}
       </Card.Group>
