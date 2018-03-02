@@ -45,6 +45,10 @@ class Home extends Component {
     );
   };
 
+  voteForCat = id => {
+    console.log(`voted for cat ${id}`);
+  };
+
   renderCats = () => {
     const { cats } = this.state;
     return (
@@ -59,6 +63,7 @@ class Home extends Component {
               size="massive"
               as="img"
               src={cat.url}
+              onClick={e => this.voteForCat(cat.id, e)}
             />
           </Card>
         ))}
