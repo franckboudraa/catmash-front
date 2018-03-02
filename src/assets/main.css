@@ -7,6 +7,10 @@ body {
   font-size: 3rem;
 }
 
+.radius {
+  border-radius: 50%;
+}
+
 .head-gradient {
   background: #cb2d3e !important; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -23,8 +27,8 @@ body {
 
 .thumbnail {
   position: relative !important;
-  width: 400px !important;
-  height: 400px !important;
+  width: 300px !important;
+  height: 300px !important;
   overflow: hidden !important;
 }
 .thumbnail img {
@@ -48,4 +52,43 @@ body {
 
 .mb-5 {
   margin-bottom: 3rem !important;
+}
+
+.swipe-left {
+  animation: fadein 1s;
+}
+
+.swipe-right {
+  animation: fadein 1s;
+}
+
+.swipe-left.animit {
+  animation: swipe-left 1s forwards;
+}
+
+.swipe-right.animit {
+  animation: swipe-right 1s forwards;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes swipe-left {
+  to {
+    transform: rotate(-13deg) translate3d(-100%, 0, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes swipe-right {
+  to {
+    transform: rotate(13deg) translate3d(100%, 0, 0);
+    opacity: 0;
+  }
 }

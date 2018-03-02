@@ -10,7 +10,8 @@ class Home extends Component {
     this.state = {
       loading: true,
       error: false,
-      cats: []
+      cats: [],
+      swipeAnimation: false
     };
   }
 
@@ -47,14 +48,35 @@ class Home extends Component {
 
   voteForCat = id => {
     console.log(`voted for cat ${id}`);
+    this.setState({
+      swipeAnimation: true
+    });
+    setTimeout(
+      function() {
+        this.setState({
+          loading: true,
+          swipeAnimation: false,
+          cats: []
+        });
+        this.fetchCats();
+      }.bind(this),
+      600
+    );
   };
 
   renderCats = () => {
-    const { cats } = this.state;
+    const { cats, swipeAnimation } = this.state;
     return (
-      <Card.Group centered rows={2}>
-        {cats.map(cat => (
-          <Card link key={cat.id} className="thumbnail">
+      <Card.Group centered rows={2} className="radius">
+        {cats.map((cat, index) => (
+          <Card
+            key={cat.id}
+            className={
+              'thumbnail ' +
+              (index === 0 ? 'swipe-left ' : 'swipe-right ') +
+              (swipeAnimation ? 'animit' : null)
+            }
+          >
             <Image
               className="thumbnail"
               centered
