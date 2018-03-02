@@ -2,6 +2,25 @@ body {
   background-color: #f7f7f7;
 }
 
+.brand {
+  font-family: 'Righteous', cursive;
+  font-size: 3rem;
+}
+
+.head-gradient {
+  background: #cb2d3e !important; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ef473a,
+    #cb2d3e
+  ) !important; /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ef473a,
+    #cb2d3e
+  ) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 .thumbnail {
   position: relative !important;
   width: 400px !important;
@@ -21,4 +40,8 @@ body {
 .ui.image {
   /* CSS Fix for Semantic UI since our pictures doesn't have the same ratio */
   max-width: unset !important;
+}
+
+.mb-5 {
+  margin-bottom: 3rem !important;
 }
