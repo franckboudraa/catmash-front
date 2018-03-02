@@ -1,0 +1,24 @@
+body {
+  background-color: #f7f7f7;
+}
+
+.thumbnail {
+  position: relative !important;
+  width: 400px !important;
+  height: 400px !important;
+  overflow: hidden !important;
+}
+.thumbnail img {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  height: 100% !important;
+  width: auto !important;
+  -webkit-transform: translate(-50%, -50%) !important;
+  -ms-transform: translate(-50%, -50%) !important;
+  transform: translate(-50%, -50%) !important;
+}
+.ui.image {
+  /* CSS Fix for Semantic UI since our pictures doesn't have the same ratio */
+  max-width: unset !important;
+}

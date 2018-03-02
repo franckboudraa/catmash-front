@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import axios from 'axios';
 
-import { Card, Loader, Message } from 'semantic-ui-react';
+import { Card, Image, Loader, Message } from 'semantic-ui-react';
 
 class Home extends Component {
   constructor(props) {
@@ -47,7 +47,23 @@ class Home extends Component {
 
   renderCats = () => {
     const { cats } = this.state;
-    return cats.map(cat => <Card color="red" key={cat.id} image={cat.url} />);
+    return (
+      <Card.Group centered rows={2}>
+        {cats.map(cat => (
+          <Card link key={cat.id} className="thumbnail">
+            <Image
+              className="thumbnail"
+              centered
+              circular
+              bordered
+              size="massive"
+              as="img"
+              src={cat.url}
+            />
+          </Card>
+        ))}
+      </Card.Group>
+    );
   };
   render() {
     const { loading, error } = this.state;
