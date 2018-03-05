@@ -2,29 +2,11 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import axios from 'axios';
 
-import { Card, Icon, Image, Loader, Message } from 'semantic-ui-react';
+import SelectedCatMessage from './Arena/SelectedCatMessage';
+import NotSelectedCatMessage from './Arena/NotSelectedCatMessage';
+import ErrorMessage from './Arena/ErrorMessage';
 
-const SelectedCatMessage = () => (
-  <Card.Content>
-    <Card.Description style={{ textAlign: 'center' }}>
-      <Icon color="green" size="massive" name="check circle" />
-    </Card.Description>
-  </Card.Content>
-);
-
-const NotSelectedCatMessage = ({ id }) => {
-  if (id === 0) {
-    return '';
-  } else {
-    return (
-      <Card.Content>
-        <Card.Description style={{ textAlign: 'center' }}>
-          <Icon color="red" size="massive" name="remove circle" />
-        </Card.Description>
-      </Card.Content>
-    );
-  }
-};
+import { Card, Image, Loader } from 'semantic-ui-react';
 
 class Home extends Component {
   constructor(props) {
@@ -48,7 +30,7 @@ class Home extends Component {
       const selectedCats = await _.chain(images) // https://lodash.com/docs
         .shuffle() // Shuffle the array of cats
         .take(2) // Take the first 2 cats
-        .value();
+        .value(); // Return result
       return this.setState(prevState => ({
         cats: [...selectedCats], // http://es6-features.org/#SpreadOperator
         loading: false
@@ -61,12 +43,7 @@ class Home extends Component {
     }
   };
   renderError = () => {
-    return (
-      <Message negative>
-        <Message.Header>Meeow!</Message.Header>
-        <p>An error occured while loading cats!</p>
-      </Message>
-    );
+    return <ErrorMessage />;
   };
 
   voteForCat = id => {
