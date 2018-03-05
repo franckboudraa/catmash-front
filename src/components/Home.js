@@ -73,7 +73,7 @@ class Home extends Component {
         });
         this.pullCats();
       }.bind(this),
-      600
+      800
     );
   };
 

@@ -5,7 +5,7 @@ import ScoresLoader from './Scores/ScoresLoader';
 import ErrorMessage from './Shared/ErrorMessage';
 import ScoresList from './Scores/ScoresList';
 
-import { Button, Icon } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 class Scores extends Component {
   constructor(props) {

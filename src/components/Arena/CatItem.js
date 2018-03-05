@@ -9,15 +9,17 @@ const CatItem = props => {
   return (
     <Card
       link
+      raised
       key={cat.id}
       style={{ width: '300px' }}
       className={
         (index === 0 ? 'swipe-left ' : 'swipe-right ') +
-        (swipeAnimation ? 'animit' : '')
+        (swipeAnimation ? 'animit' : '') +
+        ' radius'
       }
     >
       <Image
-        className="thumbnail arena"
+        className="thumbnail arena radius"
         centered
         circular
         bordered

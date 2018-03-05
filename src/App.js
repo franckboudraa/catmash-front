@@ -27,7 +27,11 @@ class App extends Component {
             path="/scores"
             render={props => <Scores {...props} apiURL={API_URL} />}
           />
-          <Footer />
+          <Route
+            render={({ history: { location } }) => (
+              <Footer location={location.pathname} />
+            )}
+          />
         </Container>
       </Router>
     );

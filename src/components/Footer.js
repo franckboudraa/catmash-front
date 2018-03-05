@@ -1,21 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Menu } from 'semantic-ui-react';
 
-class Footer extends Component {
-  render() {
-    return (
-      <Menu
-        fixed="bottom"
-        borderless
-        secondary
-        className="mt-5"
-        widths={1}
-        size="mini"
-      >
-        <Menu.Item>&copy; Franck Boudraa - All Rights Reserved 2018</Menu.Item>
-      </Menu>
-    );
+const Footer = ({ location }) => {
+  let footerClass = '';
+  if (location !== '/scores') {
+    footerClass = 'bottom fixed';
   }
-}
+  return (
+    <Menu
+      borderless
+      secondary
+      inverted
+      className={'mt-5 ' + footerClass}
+      widths={1}
+      size="mini"
+    >
+      <Menu.Item>&copy; Franck Boudraa - All Rights Reserved 2018</Menu.Item>
+    </Menu>
+  );
+};
 
 export default Footer;

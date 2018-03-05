@@ -1,14 +1,13 @@
-body {
-  background-color: #f7f7f7;
-}
-
-.brand {
+.righteous {
   font-family: 'Righteous', cursive;
-  font-size: 3rem;
 }
 
-.radius {
-  border-radius: 50%;
+.font-4rem {
+  font-size: 4rem;
+}
+
+.font-175rem {
+  font-size: 1.75rem;
 }
 
 .head-gradient {
@@ -48,8 +47,51 @@ body {
   max-width: unset !important;
 }
 
+.ui.card > :first-child,
+.ui.cards > .card > :first-child {
+  /* CSS Fix for Semantic UI */
+  border-top-color: rgba(0, 0, 0, 0) !important;
+  border-top-style: solid !important;
+  border-top-width: 10px !important;
+}
+
+.ui.card > .image,
+.ui.cards > .card > .image {
+  /* CSS Fix for Semantic UI */
+  background: rgba(0, 0, 0, 0);
+}
+
+.ui.card.arena > :first-child,
+.ui.cards.arena > .card > :first-child {
+  border-radius: 50rem !important;
+}
+
+.ui.bordered.image img,
+.ui.bordered.image svg,
+.ui.bordered.images .image,
+.ui.bordered.images img,
+.ui.bordered.images svg,
+img.ui.bordered.image {
+  /* CSS Fix for Semantic UI */
+  border: 10px solid rgba(0, 0, 0, 0);
+}
+
+.radius {
+  border-radius: 50rem !important;
+}
+
+.ui.card > .content,
+.ui.cards > .card > .content {
+  /* CSS Fix for Semantic UI */
+  border-top: unset !important;
+}
+
 .mt-5 {
   margin-top: 3rem !important;
+}
+
+.mb-5 {
+  margin-bottom: 3rem !important;
 }
 
 .mb-2 {
