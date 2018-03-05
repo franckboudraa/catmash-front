@@ -5,7 +5,7 @@ const ErrorMessage = () => {
   return (
     <Message negative>
       <Message.Header>Meeow!</Message.Header>
-      <p>An error occured while loading cats!</p>
+      <p>An error occured while managing cats! Please try again!</p>
     </Message>
   );
 };

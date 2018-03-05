@@ -20,10 +20,10 @@ class Home extends Component {
   }
 
   componentDidMount = () => {
-    this.fetchCats();
+    this.pullCats();
   };
 
-  fetchCats = async () => {
+  pullCats = async () => {
     try {
       const { data: { images } } = await axios.get('/cats.json'); // http://es6-features.org/#ObjectMatchingDeepMatching
       const selectedCats = await _.chain(images) // https://lodash.com/docs
@@ -41,17 +41,18 @@ class Home extends Component {
       });
     }
   };
+
   renderError = () => {
     return <ErrorMessage />;
   };
 
   voteForCat = id => {
-    console.log(`voted for cat ${id}`);
     this.setState({
       swipeAnimation: true,
       selectedCat: id
     });
     setTimeout(
+      // Wait for css animation to finish before pulling new cats
       function() {
         this.setState({
           loading: true,
@@ -59,14 +60,13 @@ class Home extends Component {
           cats: [],
           selectedCat: 0
         });
-        this.fetchCats();
+        this.pullCats();
       }.bind(this),
       600
     );
   };
 
-  renderCats = () => {
-    const { cats, swipeAnimation, selectedCat } = this.state;
+  renderCats = (cats, swipeAnimation, selectedCat) => {
     return (
       <CatList
         {...{ cats, swipeAnimation, selectedCat }}
@@ -75,12 +75,14 @@ class Home extends Component {
     );
   };
   render() {
-    const { loading, error } = this.state;
+    const { loading, error, cats, swipeAnimation, selectedCat } = this.state;
     return (
       <div>
         {loading ? <Loader active inline /> : null}
         {error ? this.renderError() : null}
-        {!loading && !error ? this.renderCats() : null}
+        {!loading && !error
+          ? this.renderCats(cats, swipeAnimation, selectedCat)
+          : null}
       </div>
     );
   }
