@@ -12,7 +12,8 @@ Front-End:
 Back-End:
 
 * NodeJS
+* Express
 * Redis
 * Hosted on Heroku
 
-Preview (hosted on AWS S3): http://catmash.franckboudraa.me
+Preview: http://catmash.franckboudraa.me
