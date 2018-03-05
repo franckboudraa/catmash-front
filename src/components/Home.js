@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import axios from 'axios';
 
-import SelectedCatMessage from './Arena/SelectedCatMessage';
-import NotSelectedCatMessage from './Arena/NotSelectedCatMessage';
 import ErrorMessage from './Arena/ErrorMessage';
+import CatList from './Arena/CatList';
 
-import { Card, Image, Loader } from 'semantic-ui-react';
+import { Loader } from 'semantic-ui-react';
 
 class Home extends Component {
   constructor(props) {
@@ -69,37 +68,10 @@ class Home extends Component {
   renderCats = () => {
     const { cats, swipeAnimation, selectedCat } = this.state;
     return (
-      <Card.Group centered rows={2} className="radius">
-        {cats.map((cat, index) => (
-          <Card
-            link
-            key={cat.id}
-            style={{ width: '300px' }}
-            className={
-              (index === 0 ? 'swipe-left ' : 'swipe-right ') +
-              (swipeAnimation ? 'animit' : '')
-            }
-          >
-            <Image
-              className="thumbnail"
-              centered
-              circular
-              bordered
-              size="massive"
-              as="img"
-              src={cat.url}
-              onClick={e => {
-                this.voteForCat(cat.id, e);
-              }}
-            />
-            {selectedCat === cat.id ? (
-              <SelectedCatMessage />
-            ) : (
-              <NotSelectedCatMessage id={selectedCat} />
-            )}
-          </Card>
-        ))}
-      </Card.Group>
+      <CatList
+        {...{ cats, swipeAnimation, selectedCat }}
+        voteForCat={this.voteForCat}
+      />
     );
   };
   render() {
