@@ -5,7 +5,7 @@ import NotSelectedCatMessage from './NotSelectedCatMessage';
 import { Card, Image } from 'semantic-ui-react';
 
 const CatItem = props => {
-  const { cat, index, swipeAnimation, selectedCat } = props;
+  const { cat, index, swipeAnimation, winnerId } = props;
   return (
     <Card
       link
@@ -28,10 +28,10 @@ const CatItem = props => {
           props.voteForCat(cat.id, e);
         }}
       />
-      {selectedCat === cat.id ? (
+      {winnerId === cat.id ? (
         <SelectedCatMessage />
       ) : (
-        <NotSelectedCatMessage id={selectedCat} />
+        <NotSelectedCatMessage winnerId={winnerId} />
       )}
     </Card>
   );

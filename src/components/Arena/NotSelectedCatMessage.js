@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, Icon } from 'semantic-ui-react';
 
-const NotSelectedCatMessage = ({ id }) => {
-  if (id === 0) {
+const NotSelectedCatMessage = ({ winnerId }) => {
+  if (winnerId === 0) {
     return '';
   } else {
     return (

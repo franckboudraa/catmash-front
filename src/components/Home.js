@@ -15,7 +15,8 @@ class Home extends Component {
       error: false,
       cats: [],
       swipeAnimation: false,
-      selectedCat: 0
+      winnerId: 0,
+      looserId: 0
     };
   }
 
@@ -34,7 +35,7 @@ class Home extends Component {
         cats: [...selectedCats], // http://es6-features.org/#SpreadOperator
         loading: false
       }));
-    } catch ({ response }) {
+    } catch ({ error }) {
       return this.setState({
         error: true,
         loading: false
@@ -46,10 +47,24 @@ class Home extends Component {
     return <ErrorMessage />;
   };
 
-  voteForCat = id => {
+  voteForCat = winnerId => {
+    const { cats } = this.state;
+    const looserId = cats['0'].id === winnerId ? cats['1'].id : cats['0'].id;
+
+    try {
+      axios.post('https://catmashback.herokuapp.com/new', {
+        winnerId,
+        looserId
+      });
+    } catch ({ error }) {
+      return this.setState({
+        error: true,
+        loading: false
+      });
+    }
     this.setState({
       swipeAnimation: true,
-      selectedCat: id
+      winnerId
     });
     setTimeout(
       // Wait for css animation to finish before pulling new cats
@@ -58,7 +73,7 @@ class Home extends Component {
           loading: true,
           swipeAnimation: false,
           cats: [],
-          selectedCat: 0
+          winnerId: 0
         });
         this.pullCats();
       }.bind(this),
@@ -66,22 +81,23 @@ class Home extends Component {
     );
   };
 
-  renderCats = (cats, swipeAnimation, selectedCat) => {
+  renderCats = (cats, swipeAnimation, winnerId) => {
     return (
       <CatList
-        {...{ cats, swipeAnimation, selectedCat }}
+        {...{ cats, swipeAnimation, winnerId }}
         voteForCat={this.voteForCat}
       />
     );
   };
+
   render() {
-    const { loading, error, cats, swipeAnimation, selectedCat } = this.state;
+    const { loading, error, cats, swipeAnimation, winnerId } = this.state;
     return (
       <div>
         {loading ? <Loader active inline /> : null}
         {error ? this.renderError() : null}
         {!loading && !error
-          ? this.renderCats(cats, swipeAnimation, selectedCat)
+          ? this.renderCats(cats, swipeAnimation, winnerId)
           : null}
       </div>
     );
