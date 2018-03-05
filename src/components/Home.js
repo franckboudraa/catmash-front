@@ -45,10 +45,6 @@ class Home extends Component {
     }
   };
 
-  renderError = () => {
-    return <ErrorMessage />;
-  };
-
   voteForCat = winnerId => {
     const { cats } = this.state;
     const looserId = cats['0'].id === winnerId ? cats['1'].id : cats['0'].id;
@@ -83,24 +79,20 @@ class Home extends Component {
     );
   };
 
-  renderCats = (cats, swipeAnimation, winnerId) => {
-    return (
-      <CatList
-        {...{ cats, swipeAnimation, winnerId }}
-        voteForCat={this.voteForCat}
-      />
-    );
-  };
-
   render() {
     const { loading, error, cats, swipeAnimation, winnerId } = this.state;
     return (
       <div>
         {loading ? <Loader active inline /> : null}
-        {error ? this.renderError() : null}
-        {!loading && !error
-          ? this.renderCats(cats, swipeAnimation, winnerId)
-          : ''}
+        {error ? <ErrorMessage /> : null}
+        {!loading && !error ? (
+          <CatList
+            {...{ cats, swipeAnimation, winnerId }}
+            voteForCat={this.voteForCat}
+          />
+        ) : (
+          ''
+        )}
       </div>
     );
   }
