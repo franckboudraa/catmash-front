@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import axios from 'axios';
 
-import ArenaLoader from './Arena/ArenaLoader';
 import ErrorMessage from './Shared/ErrorMessage';
 import CatList from './Arena/CatList';
 

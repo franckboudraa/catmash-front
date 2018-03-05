@@ -2,7 +2,7 @@ import React from 'react';
 import SelectedCatMessage from './SelectedCatMessage';
 import NotSelectedCatMessage from './NotSelectedCatMessage';
 
-import { Card, Dimmer, Image, Loader } from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
 
 const CatItem = props => {
   const { cat, index, swipeAnimation, winnerId } = props;
@@ -17,7 +17,7 @@ const CatItem = props => {
       }
     >
       <Image
-        className="thumbnail"
+        className="thumbnail arena"
         centered
         circular
         bordered

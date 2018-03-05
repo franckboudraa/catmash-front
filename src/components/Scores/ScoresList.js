@@ -1,14 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
+import ScoresItem from './ScoresItem';
 
-class ScoresList extends Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
-  }
+import { Card } from 'semantic-ui-react';
 
-  render() {
-    return <div>ScoresList</div>;
-  }
-}
+const ScoresList = ({ cats, sortByAsc }) => {
+  sortByAsc === true
+    ? cats.sort(function(a, b) {
+        return a.score - b.score;
+      })
+    : cats.sort(function(a, b) {
+        return b.score - a.score;
+      });
+  return (
+    <Card.Group doubling centered itemsPerRow={3} className="radius">
+      {cats.map(cat => {
+        return <ScoresItem key={cat.id} {...cat} />;
+      })}
+    </Card.Group>
+  );
+};
 
 export default ScoresList;

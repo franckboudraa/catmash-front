@@ -27,9 +27,11 @@ body {
 
 .thumbnail {
   position: relative !important;
-  width: 300px !important;
   height: 300px !important;
   overflow: hidden !important;
+}
+.thumbnail.arena {
+  width: 300px !important;
 }
 .thumbnail img {
   position: absolute !important;
@@ -50,8 +52,8 @@ body {
   margin-top: 3rem !important;
 }
 
-.mb-5 {
-  margin-bottom: 3rem !important;
+.mb-2 {
+  margin-bottom: 1.5rem !important;
 }
 
 .swipe-left {

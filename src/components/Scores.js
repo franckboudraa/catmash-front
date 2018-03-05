@@ -5,13 +5,16 @@ import ScoresLoader from './Scores/ScoresLoader';
 import ErrorMessage from './Shared/ErrorMessage';
 import ScoresList from './Scores/ScoresList';
 
+import { Button, Icon } from 'semantic-ui-react';
+
 class Scores extends Component {
   constructor(props) {
     super(props);
     this.state = {
       loading: true,
       error: false,
-      cats: []
+      cats: [],
+      sortByAsc: false
     };
   }
 
@@ -34,13 +37,32 @@ class Scores extends Component {
     }
   };
 
+  toggleSort = () => {
+    return this.setState(prevState => ({
+      sortByAsc: !this.state.sortByAsc
+    }));
+  };
+
   render() {
-    const { loading, error, cats } = this.state;
+    const { loading, error, cats, sortByAsc } = this.state;
     return (
-      <div>
+      <div style={{ textAlign: 'center' }}>
+        <Button.Group size="mini" className="mb-2">
+          <Button negative={sortByAsc} onClick={this.toggleSort}>
+            Ascending
+          </Button>
+          <Button.Or />
+          <Button negative={!sortByAsc} onClick={this.toggleSort}>
+            Descending
+          </Button>
+        </Button.Group>
         {loading ? <ScoresLoader /> : null}
         {error ? <ErrorMessage /> : null}
-        {!loading && !error ? <ScoresList {...cats} /> : ''}
+        {!loading && !error ? (
+          <ScoresList cats={cats} sortByAsc={sortByAsc} />
+        ) : (
+          ''
+        )}
       </div>
     );
   }
