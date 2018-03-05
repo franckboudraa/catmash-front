@@ -2,7 +2,7 @@ import React from 'react';
 import SelectedCatMessage from './SelectedCatMessage';
 import NotSelectedCatMessage from './NotSelectedCatMessage';
 
-import { Card, Image } from 'semantic-ui-react';
+import { Card, Dimmer, Image, Loader } from 'semantic-ui-react';
 
 const CatItem = props => {
   const { cat, index, swipeAnimation, winnerId } = props;
