@@ -5,7 +5,7 @@ import CatItem from './CatItem';
 
 const CatList = ({ cats, swipeAnimation, winnerId, voteForCat }) => {
   return (
-    <Card.Group centered itemsPerRow={2} className="radius arena">
+    <Card.Group doubling centered itemsPerRow={2} className="radius arena">
       {cats.map((cat, index) => (
         <CatItem
           key={cat.id}

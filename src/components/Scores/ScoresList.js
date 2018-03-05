@@ -12,7 +12,7 @@ const ScoresList = ({ cats, sortByAsc }) => {
         return b.score - a.score;
       });
   return (
-    <Card.Group doubling centered itemsPerRow={3} className="radius">
+    <Card.Group stackable centered itemsPerRow={3} className="radius">
       {cats.map(cat => {
         return <ScoresItem key={cat.id} {...cat} />;
       })}

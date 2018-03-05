@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Menu } from 'semantic-ui-react';
+import { Menu, Icon, Responsive } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
 const Header = () => {
@@ -8,7 +8,7 @@ const Header = () => {
     <div className="mb-5">
       <Menu attached borderless inverted secondary widths={1}>
         <Menu.Item className="righteous text-white font-4rem">
-          CAT MASH
+          <Responsive as={Icon} minWidth={768} name="paw" /> CAT MASH
         </Menu.Item>
       </Menu>
       <Menu attached inverted className="bg-red-gradient" widths={2}>

@@ -81,7 +81,10 @@ class Home extends Component {
     const { loading, error, cats, swipeAnimation, winnerId } = this.state;
     return (
       <div className="text-center">
-        <div className="righteous font-25rem text-white mb-2">
+        <div
+          className="righteous font-25rem text-white mb-2"
+          style={{ lineHeight: '35px' }}
+        >
           CHOOSE THE CUTEST:
         </div>
         {!error ? (

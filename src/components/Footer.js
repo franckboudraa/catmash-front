@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Responsive } from 'semantic-ui-react';
 
 const Footer = ({ location }) => {
   let footerClass = '';
@@ -7,7 +7,9 @@ const Footer = ({ location }) => {
     footerClass = 'bottom fixed';
   }
   return (
-    <Menu
+    <Responsive
+      as={Menu}
+      minWidth={768}
       borderless
       secondary
       inverted
@@ -25,7 +27,7 @@ const Footer = ({ location }) => {
           &copy; Franck Boudraa - All Rights Reserved 2018
         </a>
       </Menu.Item>
-    </Menu>
+    </Responsive>
   );
 };
 

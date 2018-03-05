@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Scores from './components/Scores';
 import Footer from './components/Footer';
 
+import './assets/semantic.min.css';
 import './assets/main.css';
 
 import { Container } from 'semantic-ui-react';
