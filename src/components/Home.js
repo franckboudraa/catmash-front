@@ -26,13 +26,15 @@ class Home extends Component {
 
   pullCats = async () => {
     try {
-      const { data: { images } } = await axios.get('/cats.json'); // http://es6-features.org/#ObjectMatchingDeepMatching
+      const { data: { images } } = await axios.get(
+        `${this.props.apiURL}/cats.json`
+      );
       const selectedCats = await _.chain(images) // https://lodash.com/docs
         .shuffle() // Shuffle the array of cats
         .take(2) // Take the first 2 cats
         .value(); // Return result
       return this.setState(prevState => ({
-        cats: [...selectedCats], // http://es6-features.org/#SpreadOperator
+        cats: [...selectedCats],
         loading: false
       }));
     } catch ({ error }) {
@@ -52,7 +54,7 @@ class Home extends Component {
     const looserId = cats['0'].id === winnerId ? cats['1'].id : cats['0'].id;
 
     try {
-      axios.post('https://catmashback.herokuapp.com/new', {
+      axios.post(`${this.props.apiURL}/new`, {
         winnerId,
         looserId
       });
@@ -98,7 +100,7 @@ class Home extends Component {
         {error ? this.renderError() : null}
         {!loading && !error
           ? this.renderCats(cats, swipeAnimation, winnerId)
-          : null}
+          : ''}
       </div>
     );
   }

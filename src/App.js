@@ -10,14 +10,23 @@ import './assets/main.css';
 
 import { Container } from 'semantic-ui-react';
 
+const API_URL = 'https://catmashback.herokuapp.com';
+
 class App extends Component {
   render() {
     return (
       <Router>
         <Container>
           <Header />
-          <Route exact path="/" component={Home} />
-          <Route path="/scores" component={Scores} />
+          <Route
+            exact
+            path="/"
+            render={props => <Home {...props} apiURL={API_URL} />}
+          />
+          <Route
+            path="/scores"
+            render={props => <Scores {...props} apiURL={API_URL} />}
+          />
           <Footer />
         </Container>
       </Router>
