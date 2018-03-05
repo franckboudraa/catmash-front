@@ -6,24 +6,35 @@
   font-size: 4rem;
 }
 
-.font-175rem {
-  font-size: 1.75rem;
+.font-25rem {
+  font-size: 2.5rem;
 }
 
-.head-gradient {
-  background: #e52d27 !important; /* fallback for old browsers */
+.font-185rem {
+  font-size: 1.85rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-white {
+  color: white !important;
+}
+
+.bg-red-gradient {
+  background: #a73737 !important; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
-    #b31217,
-    #e52d27
+    #7a2828,
+    #a73737
   ) !important; /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
-    #b31217,
-    #e52d27
+    #7a2828,
+    #a73737
   ) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-
 .thumbnail {
   position: relative !important;
   height: 300px !important;
@@ -52,7 +63,7 @@
   /* CSS Fix for Semantic UI */
   border-top-color: rgba(0, 0, 0, 0) !important;
   border-top-style: solid !important;
-  border-top-width: 10px !important;
+  border-top-width: 7px !important;
 }
 
 .ui.card > .image,
@@ -73,7 +84,7 @@
 .ui.bordered.images svg,
 img.ui.bordered.image {
   /* CSS Fix for Semantic UI */
-  border: 10px solid rgba(0, 0, 0, 0);
+  border: 7px solid rgba(0, 0, 0, 0);
 }
 
 .radius {

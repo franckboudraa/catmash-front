@@ -80,7 +80,10 @@ class Home extends Component {
   render() {
     const { loading, error, cats, swipeAnimation, winnerId } = this.state;
     return (
-      <div>
+      <div className="text-center">
+        <div className="righteous font-25rem text-white mb-2">
+          CHOOSE THE CUTEST:
+        </div>
         {!error ? (
           <CatList
             {...{ cats, swipeAnimation, winnerId, loading }}

@@ -6,10 +6,8 @@ const ScoresItem = ({ url, score }) => {
   return (
     <Card link>
       <Image bordered circular className="thumbnail" as="img" src={url} />
-      <Card.Content extra>
-        <a>
-          Cuteness: <strong>{score}</strong> <Icon name="paw" />
-        </a>
+      <Card.Content>
+        Cuteness: <strong>{score}</strong> <Icon name="paw" />
       </Card.Content>
     </Card>
   );
