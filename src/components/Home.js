@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import axios from 'axios';
 
-import ErrorMessage from './Arena/ErrorMessage';
+import ErrorMessage from './Shared/ErrorMessage';
 import CatList from './Arena/CatList';
 
 import { Loader } from 'semantic-ui-react';
@@ -83,7 +83,7 @@ class Home extends Component {
     const { loading, error, cats, swipeAnimation, winnerId } = this.state;
     return (
       <div>
-        {loading ? <Loader active inline /> : null}
+        {loading ? <Loader active inline="centered" /> : null}
         {error ? <ErrorMessage /> : null}
         {!loading && !error ? (
           <CatList
