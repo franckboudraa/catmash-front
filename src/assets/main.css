@@ -38,26 +38,11 @@
   ) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .thumbnail {
-  position: relative !important;
   height: 300px !important;
-  overflow: hidden !important;
+  object-fit: cover;
 }
 .thumbnail.arena {
   width: 300px !important;
-}
-.thumbnail img {
-  position: absolute !important;
-  left: 50% !important;
-  top: 50% !important;
-  /*height: 100% !important;
-  width: auto !important;*/
-  -webkit-transform: translate(-50%, -50%) !important;
-  -ms-transform: translate(-50%, -50%) !important;
-  transform: translate(-50%, -50%) !important;
-}
-.ui.image {
-  /* CSS Fix for Semantic UI since our pictures doesn't have the same ratio */
-  max-width: unset !important;
 }
 
 .ui.card > :first-child,
